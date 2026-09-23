@@ -1626,3 +1626,17 @@ footer{
     display:block;
     color:#ffffff;
 }
+
+.hero-title .hero-line-main,
+.hero-title .hero-line-sub{
+    display:block;
+}
+
+.hero-title .hero-line-main{
+    color:#294b3c;
+}
+
+.hero-title .hero-line-sub{
+    color:#ffffff;
+    margin-top:4px;
+}
