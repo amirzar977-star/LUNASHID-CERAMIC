@@ -1,0 +1,293 @@
+﻿{% extends "base.html" %}
+{% block title %}پنل مشتری | LunaShid{% endblock %}
+
+{% block content %}
+<main class="customer-page">
+
+    <section class="customer-layout">
+
+        <aside class="customer-sidebar glass-card">
+
+            <div class="customer-profile">
+                <div class="profile-avatar">L</div>
+
+                <div>
+                    <strong>حساب مشتری</strong>
+                    <span id="customerPhone">مشتری لونا شید</span>
+                </div>
+            </div>
+
+            <nav class="customer-menu">
+
+                <button class="customer-menu-item active" data-section="overview">
+                    <span>⌂</span>
+                    <span>نمای کلی</span>
+                </button>
+
+                <button class="customer-menu-item" data-section="orders">
+                    <span>▣</span>
+                    <span>سفارش‌های من</span>
+                </button>
+
+                <button class="customer-menu-item" data-section="favorites">
+                    <span>♡</span>
+                    <span>علاقه‌مندی‌ها</span>
+                </button>
+
+                <button class="customer-menu-item" data-section="profile">
+                    <span>◯</span>
+                    <span>اطلاعات حساب</span>
+                </button>
+
+                <button class="customer-menu-item" data-section="addresses">
+                    <span>⌖</span>
+                    <span>آدرس‌ها</span>
+                </button>
+
+                <button class="customer-menu-item" data-section="settings">
+                    <span>⚙</span>
+                    <span>تنظیمات</span>
+                </button>
+
+            </nav>
+
+            <button class="logout-button" onclick="logoutCustomer()">
+                خروج از حساب
+            </button>
+
+        </aside>
+
+
+        <section class="customer-content">
+
+            <div class="customer-top glass-card">
+                <div>
+                    <span class="customer-eyebrow">MY LUNASHID</span>
+                    <h1>سلام، خوش اومدی</h1>
+                    <p>همه چیز درباره حساب و سفارش‌های تو، اینجاست.</p>
+                </div>
+
+                <a href="/shop/" class="shop-button">
+                    رفتن به فروشگاه
+                </a>
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="dashboard-card glass-card">
+                    <span class="dashboard-icon">▣</span>
+                    <div>
+                        <small>سفارش‌ها</small>
+                        <strong>۰</strong>
+                    </div>
+                </div>
+
+                <div class="dashboard-card glass-card">
+                    <span class="dashboard-icon">♡</span>
+                    <div>
+                        <small>علاقه‌مندی‌ها</small>
+                        <strong>۰</strong>
+                    </div>
+                </div>
+
+                <div class="dashboard-card glass-card">
+                    <span class="dashboard-icon">◷</span>
+                    <div>
+                        <small>سفارش در حال پردازش</small>
+                        <strong>۰</strong>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <section id="overview" class="dashboard-section glass-card">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="customer-eyebrow">ACCOUNT</span>
+                        <h2>نمای کلی حساب</h2>
+                    </div>
+                </div>
+
+                <div class="empty-dashboard">
+
+                    <div class="empty-icon">◌</div>
+
+                    <h3>هنوز سفارشی ثبت نکردی</h3>
+
+                    <p>
+                        وقتی اولین خریدت رو از لونا شید انجام بدی،
+                        اطلاعات سفارش اینجا نمایش داده می‌شه.
+                    </p>
+
+                    <a href="/shop/" class="primary-dashboard-button">
+                        مشاهده محصولات
+                    </a>
+
+                </div>
+
+            </section>
+
+
+            <section id="orders" class="dashboard-section glass-card hidden-section">
+                <div class="section-heading">
+                    <span class="customer-eyebrow">ORDERS</span>
+                    <h2>سفارش‌های من</h2>
+                </div>
+
+                <div class="empty-dashboard small">
+                    <div class="empty-icon">▣</div>
+                    <h3>هنوز سفارشی نداری</h3>
+                    <p>سفارش‌های آینده‌ات اینجا نمایش داده می‌شوند.</p>
+                </div>
+            </section>
+
+
+            <section id="favorites" class="dashboard-section glass-card hidden-section">
+                <div class="section-heading">
+                    <span class="customer-eyebrow">FAVORITES</span>
+                    <h2>علاقه‌مندی‌ها</h2>
+                </div>
+
+                <div class="empty-dashboard small">
+                    <div class="empty-icon">♡</div>
+                    <h3>لیست علاقه‌مندی‌ها خالی است</h3>
+                    <p>محصولات مورد علاقه‌ات را از فروشگاه ذخیره کن.</p>
+                </div>
+            </section>
+
+
+            <section id="profile" class="dashboard-section glass-card hidden-section">
+                <div class="section-heading">
+                    <span class="customer-eyebrow">PROFILE</span>
+                    <h2>اطلاعات حساب</h2>
+                </div>
+
+                <div class="profile-form">
+
+                    <label>
+                        نام و نام خانوادگی
+                        <input type="text" placeholder="نام خود را وارد کنید">
+                    </label>
+
+                    <label>
+                        شماره موبایل
+                        <input id="profilePhone" type="tel" readonly>
+                    </label>
+
+                    <label>
+                        ایمیل
+                        <input type="email" placeholder="example@email.com">
+                    </label>
+
+                    <button class="save-button" type="button">
+                        ذخیره تغییرات
+                    </button>
+
+                </div>
+            </section>
+
+
+            <section id="addresses" class="dashboard-section glass-card hidden-section">
+                <div class="section-heading">
+                    <span class="customer-eyebrow">ADDRESSES</span>
+                    <h2>آدرس‌های من</h2>
+                </div>
+
+                <div class="empty-dashboard small">
+                    <div class="empty-icon">⌖</div>
+                    <h3>هنوز آدرسی ثبت نشده</h3>
+                    <p>آدرس ارسال سفارش را بعداً می‌توانی اینجا اضافه کنی.</p>
+
+                    <button class="primary-dashboard-button" type="button">
+                        افزودن آدرس
+                    </button>
+                </div>
+            </section>
+
+
+            <section id="settings" class="dashboard-section glass-card hidden-section">
+                <div class="section-heading">
+                    <span class="customer-eyebrow">SETTINGS</span>
+                    <h2>تنظیمات</h2>
+                </div>
+
+                <div class="settings-list">
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>اعلان‌ها</strong>
+                            <span>اطلاع‌رسانی درباره سفارش‌ها</span>
+                        </div>
+
+                        <input type="checkbox" checked>
+                    </div>
+
+                    <div class="setting-row">
+                        <div>
+                            <strong>ایمیل‌های فروشگاه</strong>
+                            <span>دریافت اخبار و محصولات جدید</span>
+                        </div>
+
+                        <input type="checkbox">
+                    </div>
+
+                </div>
+            </section>
+
+        </section>
+
+    </section>
+
+</main>
+
+
+<script>
+
+const menuItems = document.querySelectorAll(".customer-menu-item");
+const sections = document.querySelectorAll(".dashboard-section");
+
+menuItems.forEach(item => {
+
+    item.addEventListener("click", () => {
+
+        const target = item.dataset.section;
+
+        menuItems.forEach(button => {
+            button.classList.remove("active");
+        });
+
+        item.classList.add("active");
+
+        sections.forEach(section => {
+            section.classList.add("hidden-section");
+        });
+
+        document.getElementById(target).classList.remove("hidden-section");
+
+    });
+
+});
+
+
+const savedPhone = localStorage.getItem("lunashid_phone");
+
+if (savedPhone) {
+    document.getElementById("customerPhone").textContent = savedPhone;
+    document.getElementById("profilePhone").value = savedPhone;
+}
+
+
+function logoutCustomer() {
+
+    localStorage.removeItem("lunashid_customer");
+    localStorage.removeItem("lunashid_phone");
+
+    window.location.href = "/login/";
+
+}
+
+</script>
+{% endblock %}

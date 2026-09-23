@@ -1,0 +1,147 @@
+﻿{% extends "base.html" %}
+
+{% block title %}
+ورود | LunaShid
+{% endblock %}
+
+
+{% block content %}
+
+<main class="auth-page">
+
+    <section class="auth-card glass-card">
+
+        <div class="auth-heading">
+
+            <span class="auth-eyebrow">
+                LUNASHID ACCOUNT
+            </span>
+
+            <h1>
+                ورود به حساب
+            </h1>
+
+            <p>
+                برای ادامه، وارد حساب مشتری خود شوید.
+            </p>
+
+        </div>
+
+
+        <form
+            class="auth-form"
+            id="loginForm">
+
+
+            <label>
+
+                شماره موبایل
+
+                <input
+                    id="phone"
+                    type="tel"
+                    inputmode="tel"
+                    placeholder="09123456789"
+                    required>
+
+            </label>
+
+
+            <label>
+
+                رمز عبور
+
+                <input
+                    id="password"
+                    type="password"
+                    placeholder="رمز عبور"
+                    required>
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="auth-submit">
+
+                ورود به حساب
+
+            </button>
+
+
+            <p
+                id="loginMessage"
+                class="login-message">
+            </p>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<script>
+
+document
+    .getElementById("loginForm")
+    .addEventListener("submit", function(event){
+
+        event.preventDefault();
+
+
+        const phone =
+            document.getElementById("phone").value.trim();
+
+        const password =
+            document.getElementById("password").value.trim();
+
+
+        if(!phone || !password){
+
+            return;
+
+        }
+
+
+        /*
+            تنها جایی که وضعیت ورود ساخته می‌شود
+        */
+
+        localStorage.setItem(
+            "LUNASHID_USER_LOGGED",
+            "1"
+        );
+
+
+        localStorage.setItem(
+            "lunashid_customer",
+            "true"
+        );
+
+
+        localStorage.setItem(
+            "lunashid_phone",
+            phone
+        );
+
+
+        document
+            .getElementById("loginMessage")
+            .textContent =
+            "ورود موفق بود؛ در حال انتقال...";
+
+
+        setTimeout(function(){
+
+            window.location.replace(
+                "/customer/"
+            );
+
+        }, 500);
+
+    });
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,219 @@
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+    outline: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: #EFE6D6;
+    font-family: 'Inter', sans-serif;
+    color: #223229;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { display: block; max-width: 100%; }
+
+/* ---------- Page Layout ---------- */
+.page {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* ---------- LEFT: Image Column (background) ---------- */
+.left {
+    flex: 1;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #E9A77F;
+
+    /* عکس به‌عنوان پس‌زمینه */
+    background-image: url('/static/images/hero.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: local;
+}
+
+/* ---------- RIGHT: Content Column ---------- */
+.right {
+    flex: 1;
+    height: 100vh;
+    background: #EFE6D6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 45px 7% 70px;
+}
+
+/* ---------- NAV ---------- */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 55px;
+    flex-shrink: 0;
+}
+
+.nav ul {
+    display: flex;
+    gap: 40px;
+}
+
+.nav ul a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    color: #223229;
+    transition: color .3s;
+}
+
+.nav ul a:hover { color: #B95F43; }
+
+.shop-btn {
+    display: inline-block;
+    font-size: 0.75rem;
+    letter-spacing: 3px;
+    font-weight: 500;
+    background: #223229;
+    color: #EFE6D6;
+    padding: 14px 36px;
+    border-radius: 50px;
+    transition: all .3s ease;
+}
+
+.shop-btn:hover {
+    background: #B95F43;
+    transform: translateY(-2px);
+}
+
+/* ---------- MAIN TEXT ---------- */
+.text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 560px;
+    padding-left: 10px;
+}
+
+.text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+    font-weight: 500;
+    line-height: 1.15;
+    color: #223229;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+.text p {
+    font-size: 0.98rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #4A5750;
+    margin-bottom: 46px;
+    max-width: 480px;
+}
+
+/* ---------- BUTTONS ---------- */
+.buttons {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.btn-outline,
+.btn-solid {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    padding: 15px 36px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all .3s ease;
+    display: inline-block;
+    text-align: center;
+    border: 1.5px solid #223229;
+}
+
+.btn-outline {
+    background: transparent;
+    color: #223229;
+}
+
+.btn-outline:hover {
+    background: #223229;
+    color: #EFE6D6;
+    transform: translateY(-2px);
+}
+
+.btn-solid {
+    background: #223229;
+    color: #EFE6D6;
+}
+
+.btn-solid:hover {
+    background: #B95F43;
+    border-color: #B95F43;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(185, 95, 67, .28);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    html, body { overflow-y: auto; }
+
+    .page {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .left {
+        width: 100%;
+        height: 55vh;
+        flex: none;
+    }
+
+    .right {
+        width: 100%;
+        height: auto;
+        flex: none;
+        padding: 40px 8% 60px;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 24px;
+    }
+
+    .nav ul {
+        gap: 22px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .text {
+        margin-top: 50px;
+        padding-left: 0;
+        max-width: 100%;
+    }
+}

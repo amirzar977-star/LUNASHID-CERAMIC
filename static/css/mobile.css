@@ -1,0 +1,305 @@
+﻿
+/* =========================================
+   LUNASHID — MOBILE FIRST
+   ========================================= */
+
+html{
+    overflow-x:hidden;
+}
+
+body{
+    overflow-x:hidden;
+    width:100%;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 768px){
+
+    /* عمومی */
+    *{
+        max-width:100%;
+    }
+
+    .container,
+    .wrapper,
+    .section,
+    main{
+        width:100% !important;
+        max-width:100% !important;
+        padding-left:16px !important;
+        padding-right:16px !important;
+    }
+
+    /* ---------- HEADER ---------- */
+
+    header{
+        width:100%;
+        padding:12px 14px !important;
+        position:relative;
+        z-index:100;
+    }
+
+    header .container{
+        padding:0 !important;
+    }
+
+    header nav{
+        gap:10px !important;
+    }
+
+    header nav a{
+        font-size:12px !important;
+        white-space:nowrap;
+    }
+
+    /* ---------- HERO ---------- */
+
+    .hero{
+        min-height:72vh !important;
+        height:auto !important;
+        padding:70px 18px 50px !important;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+    }
+
+    .hero-content{
+        width:100% !important;
+        max-width:100% !important;
+    }
+
+    .hero h1{
+        font-size:34px !important;
+        line-height:1.55 !important;
+        margin-bottom:18px !important;
+    }
+
+    .hero p{
+        font-size:14px !important;
+        line-height:2 !important;
+        max-width:330px !important;
+        margin:0 auto 25px !important;
+    }
+
+    .hero .btn,
+    .hero button,
+    .hero a{
+        min-height:48px;
+        padding:12px 22px !important;
+        border-radius:15px !important;
+    }
+
+    /* ---------- SECTION TITLES ---------- */
+
+    section{
+        padding-top:45px !important;
+        padding-bottom:45px !important;
+    }
+
+    section h2{
+        font-size:25px !important;
+        line-height:1.5 !important;
+    }
+
+    section > p{
+        font-size:13px !important;
+        line-height:2 !important;
+    }
+
+    /* ---------- PRODUCTS ---------- */
+
+    .products,
+    .product-grid,
+    .products-grid{
+        display:grid !important;
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+        gap:12px !important;
+    }
+
+    .product-card{
+        min-width:0 !important;
+        border-radius:18px !important;
+        overflow:hidden;
+    }
+
+    .product-card img{
+        width:100% !important;
+        height:170px !important;
+        object-fit:cover !important;
+    }
+
+    .product-card .content,
+    .product-card .product-info{
+        padding:12px !important;
+    }
+
+    .product-card h2,
+    .product-card h3,
+    .product-title,
+    .product-name{
+        font-size:14px !important;
+        line-height:1.6 !important;
+    }
+
+    .product-card p{
+        font-size:11px !important;
+        line-height:1.8 !important;
+    }
+
+    .price,
+    .product-price{
+        font-size:14px !important;
+    }
+
+    /* ---------- PRODUCT DETAIL ---------- */
+
+    .product-page,
+    .product-detail{
+        padding:20px 14px !important;
+    }
+
+    .product-box{
+        width:100% !important;
+        padding:16px !important;
+        border-radius:22px !important;
+    }
+
+    .product-box img{
+        width:100% !important;
+        height:auto !important;
+        max-height:420px !important;
+        object-fit:cover !important;
+        border-radius:18px !important;
+    }
+
+    .product-info h1{
+        font-size:26px !important;
+        line-height:1.5 !important;
+    }
+
+    .product-description{
+        font-size:13px !important;
+        line-height:2 !important;
+    }
+
+    /* ---------- BUTTONS ---------- */
+
+    button,
+    .btn,
+    a.btn{
+        min-height:46px;
+        font-size:13px !important;
+        border-radius:14px !important;
+    }
+
+    /* ---------- FORMS ---------- */
+
+    input,
+    textarea,
+    select{
+        width:100% !important;
+        min-height:46px !important;
+        font-size:14px !important;
+    }
+
+    textarea{
+        min-height:120px !important;
+    }
+
+    /* ---------- FOOTER ---------- */
+
+    footer{
+        padding:35px 18px !important;
+        text-align:center;
+    }
+
+    footer .container{
+        padding:0 !important;
+    }
+
+    /* ---------- GLASS ---------- */
+
+    .card,
+    .product-card,
+    .product-box,
+    .content-card{
+        backdrop-filter:blur(10px) !important;
+        -webkit-backdrop-filter:blur(10px) !important;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONES
+   ========================================= */
+
+@media (max-width: 420px){
+
+    .hero{
+        min-height:68vh !important;
+        padding:60px 14px 40px !important;
+    }
+
+    .hero h1{
+        font-size:29px !important;
+    }
+
+    .hero p{
+        font-size:13px !important;
+    }
+
+    .products,
+    .product-grid,
+    .products-grid{
+        gap:9px !important;
+    }
+
+    .product-card img{
+        height:145px !important;
+    }
+
+    .product-card .content,
+    .product-card .product-info{
+        padding:10px !important;
+    }
+
+    .product-card h2,
+    .product-card h3,
+    .product-title,
+    .product-name{
+        font-size:13px !important;
+    }
+
+    .price,
+    .product-price{
+        font-size:13px !important;
+    }
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width:360px){
+
+    .hero h1{
+        font-size:26px !important;
+    }
+
+    .products,
+    .product-grid,
+    .products-grid{
+        grid-template-columns:1fr 1fr !important;
+        gap:7px !important;
+    }
+
+    .product-card img{
+        height:125px !important;
+    }
+}
+

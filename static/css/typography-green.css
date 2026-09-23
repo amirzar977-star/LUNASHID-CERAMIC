@@ -1,0 +1,87 @@
+﻿
+/* ==============================
+   LUNASHID — DARK GREEN TYPOGRAPHY
+   ============================== */
+
+:root{
+    --lunashid-green:#2F4A3D;
+    --lunashid-green-dark:#23382F;
+}
+
+/* تیترهای اصلی */
+h1,
+h2{
+    color:var(--lunashid-green) !important;
+}
+
+/* تیترهای فرعی مهم */
+h3{
+    color:var(--lunashid-green) !important;
+}
+
+/* نام محصولات */
+.product-title,
+.product-name,
+.product-card h3,
+.product-card h2,
+.product-info h1,
+.product-info h2{
+    color:var(--lunashid-green-dark) !important;
+}
+
+/* قیمت */
+.price,
+.product-price,
+.product-card .price,
+.product-info .price{
+    color:var(--lunashid-green) !important;
+    font-weight:700;
+}
+
+/* برچسب‌ها و اطلاعات مهم */
+.label,
+.category,
+.product-category{
+    color:var(--lunashid-green) !important;
+}
+
+/* لینک‌های مهم داخل محتوا */
+.content a,
+.product-info a{
+    color:var(--lunashid-green) !important;
+}
+
+/* متن توضیحات محصول — سبز نشود */
+.product-description,
+.description,
+p{
+    color:inherit;
+}
+
+/* متن‌های معمولی هم سبز نشوند */
+body{
+    color:inherit;
+}
+
+/* منوی اصلی هم دست‌نخورده بماند */
+nav a,
+header a{
+    color:inherit;
+}
+
+/* روی هاور لینک‌های مهم */
+.content a:hover,
+.product-info a:hover{
+    color:var(--lunashid-green-dark) !important;
+}
+
+
+.green-word{
+    color:#2F4A3D !important;
+}
+
+
+.green-word{
+    color:#2F4A3D !important;
+}
+

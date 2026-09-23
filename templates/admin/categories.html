@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>دسته‌بندی‌ها | LUNASHID</title>
+
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap">
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/admin.css') }}">
+
+<style>
+
+:root{
+    --green:#2F4A3D;
+    --green-dark:#23382F;
+    --cream:#F7F1E8;
+    --glass:rgba(255,255,255,.25);
+    --border:rgba(255,255,255,.42);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+    font-family:Vazirmatn,Tahoma,sans-serif;
+    color:var(--green-dark);
+
+    background:
+        url("/static/images/shop-background.jpg")
+        center/cover fixed no-repeat;
+}
+
+.page{
+    min-height:100vh;
+    padding:35px;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+/* HEADER */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:28px;
+}
+
+.title-area h1{
+    margin:0;
+    font-size:32px;
+    color:var(--green);
+}
+
+.title-area p{
+    margin:7px 0 0;
+    opacity:.72;
+    font-size:14px;
+}
+
+.back{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 18px;
+    border-radius:15px;
+
+    background:rgba(255,255,255,.30);
+    backdrop-filter:blur(12px);
+
+    border:1px solid var(--border);
+
+    color:var(--green);
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* MAIN GRID */
+
+.layout{
+    display:grid;
+    grid-template-columns:340px 1fr;
+    gap:22px;
+    align-items:start;
+}
+
+/* GLASS CARDS */
+
+.glass{
+    background:rgba(255,255,255,.23);
+    backdrop-filter:blur(16px) saturate(130%);
+    -webkit-backdrop-filter:blur(16px) saturate(130%);
+
+    border:1px solid rgba(255,255,255,.42);
+    border-radius:26px;
+
+    box-shadow:
+        0 18px 50px rgba(0,0,0,.12),
+        inset 0 1px rgba(255,255,255,.35);
+}
+
+/* ADD CATEGORY */
+
+.add-card{
+    padding:25px;
+    position:sticky;
+    top:25px;
+}
+
+.add-icon{
+    width:52px;
+    height:52px;
+    border-radius:17px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(47,74,61,.12);
+    color:var(--green);
+    font-size:25px;
+    margin-bottom:16px;
+}
+
+.add-card h2{
+    margin:0;
+    color:var(--green);
+    font-size:20px;
+}
+
+.add-card p{
+    font-size:12px;
+    opacity:.65;
+    line-height:1.8;
+    margin:8px 0 20px;
+}
+
+.field{
+    margin-bottom:13px;
+}
+
+.field label{
+    display:block;
+    font-size:12px;
+    margin-bottom:7px;
+    font-weight:600;
+}
+
+.field input{
+    width:100%;
+    height:48px;
+    padding:0 14px;
+
+    border:1px solid rgba(47,74,61,.18);
+    border-radius:14px;
+
+    background:rgba(255,255,255,.48);
+
+    outline:none;
+    font-family:inherit;
+    color:var(--green-dark);
+}
+
+.field input:focus{
+    border-color:rgba(47,74,61,.45);
+    background:rgba(255,255,255,.72);
+}
+
+.add-btn{
+    width:100%;
+    height:49px;
+
+    border:0;
+    border-radius:15px;
+
+    background:var(--green);
+    color:white;
+
+    font-family:inherit;
+    font-weight:600;
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.add-btn:hover{
+    background:var(--green-dark);
+    transform:translateY(-1px);
+}
+
+/* CATEGORY LIST */
+
+.list-card{
+    padding:25px;
+}
+
+.list-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.list-head h2{
+    margin:0;
+    font-size:20px;
+    color:var(--green);
+}
+
+.count{
+    padding:7px 12px;
+    border-radius:12px;
+    background:rgba(47,74,61,.11);
+    color:var(--green);
+    font-size:12px;
+    font-weight:700;
+}
+
+/* CATEGORY */
+
+.category{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+
+    padding:17px;
+
+    background:rgba(255,255,255,.25);
+    border:1px solid rgba(255,255,255,.34);
+
+    border-radius:18px;
+
+    margin-bottom:10px;
+
+    transition:.2s;
+}
+
+.category:hover{
+    background:rgba(255,255,255,.40);
+    transform:translateY(-1px);
+}
+
+.category-info{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    min-width:0;
+}
+
+.category-icon{
+    width:43px;
+    height:43px;
+    flex:none;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:rgba(47,74,61,.12);
+    color:var(--green);
+    font-weight:800;
+}
+
+.category-name{
+    font-weight:700;
+    font-size:14px;
+    color:var(--green-dark);
+}
+
+.category-slug{
+    font-size:11px;
+    opacity:.55;
+    direction:ltr;
+    text-align:right;
+    margin-top:3px;
+}
+
+.delete{
+    width:40px;
+    height:40px;
+    flex:none;
+
+    border:1px solid rgba(150,50,50,.15);
+    border-radius:12px;
+
+    background:rgba(255,255,255,.25);
+    color:#8b3a3a;
+
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.delete:hover{
+    background:rgba(150,50,50,.10);
+}
+
+/* EMPTY */
+
+.empty{
+    padding:55px 20px;
+    text-align:center;
+    opacity:.65;
+}
+
+.empty-icon{
+    font-size:40px;
+    margin-bottom:12px;
+}
+
+.empty h3{
+    margin:0 0 7px;
+    color:var(--green);
+}
+
+.empty p{
+    margin:0;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .page{
+        padding:18px 13px;
+    }
+
+    .header{
+        align-items:flex-start;
+    }
+
+    .title-area h1{
+        font-size:25px;
+    }
+
+    .title-area p{
+        font-size:12px;
+    }
+
+    .back{
+        padding:10px 13px;
+        font-size:12px;
+    }
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .add-card{
+        position:static;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .header{
+        flex-direction:column;
+        gap:14px;
+    }
+
+    .back{
+        width:100%;
+        justify-content:center;
+    }
+
+    .glass{
+        border-radius:21px;
+    }
+
+    .add-card,
+    .list-card{
+        padding:18px;
+    }
+
+    .category{
+        padding:13px;
+    }
+
+    .category-icon{
+        width:38px;
+        height:38px;
+    }
+
+    .category-name{
+        font-size:13px;
+    }
+
+    .delete{
+        width:37px;
+        height:37px;
+    }
+
+}
+
+</style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/global-background.css') }}"></head>
+
+
+<body>
+
+<div class="page">
+
+<div class="container">
+
+
+<header class="header">
+
+<div class="title-area">
+
+<h1>
+دسته‌بندی‌ها
+</h1>
+
+<p>
+مدیریت گروه‌بندی محصولات فروشگاه LUNASHID
+</p>
+
+</div>
+
+<a class="back"
+href="{{ url_for('admin.dashboard') }}">
+
+← بازگشت به داشبورد
+
+</a>
+
+</header>
+
+
+<div class="layout">
+
+
+<!-- ADD -->
+
+<section class="glass add-card">
+
+<div class="add-icon">
+＋
+</div>
+
+<h2>
+دسته‌بندی جدید
+</h2>
+
+<p>
+برای مرتب‌سازی محصولات، یک دسته‌بندی جدید ایجاد کنید.
+</p>
+
+<form method="POST">
+
+<div class="field">
+
+<label>
+نام دسته‌بندی
+</label>
+
+<input
+name="name"
+placeholder="مثلاً گلدان"
+required>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Slug
+</label>
+
+<input
+name="slug"
+placeholder="vases"
+dir="ltr"
+required>
+
+</div>
+
+
+<button class="add-btn">
+افزودن دسته‌بندی
+</button>
+
+</form>
+
+</section>
+
+
+<!-- LIST -->
+
+<section class="glass list-card">
+
+<div class="list-head">
+
+<h2>
+دسته‌بندی‌های فروشگاه
+</h2>
+
+<span class="count">
+{{ categories|length }} دسته
+</span>
+
+</div>
+
+
+{% for category in categories %}
+
+<div class="category">
+
+<div class="category-info">
+
+<div class="category-icon">
+{{ loop.index }}
+</div>
+
+<div>
+
+<div class="category-name">
+{{ category.name }}
+</div>
+
+<div class="category-slug">
+{{ category.slug }}
+</div>
+
+</div>
+
+</div>
+
+
+<form
+method="POST"
+action="{{ url_for('admin.delete_category', category_id=category.id) }}"
+onsubmit="return confirm('این دسته‌بندی حذف شود؟');">
+
+<button class="delete" title="حذف">
+×
+</button>
+
+</form>
+
+</div>
+
+{% else %}
+
+<div class="empty">
+
+<div class="empty-icon">
+◇
+</div>
+
+<h3>
+هنوز دسته‌بندی‌ای ساخته نشده
+</h3>
+
+<p>
+از بخش کناری اولین دسته‌بندی فروشگاه را ایجاد کنید.
+</p>
+
+</div>
+
+{% endfor %}
+
+</section>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
+
+

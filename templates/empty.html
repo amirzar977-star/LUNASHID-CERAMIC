@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ title }} | LunaShid</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<div class="background"></div>
+
+<header class="glass-header">
+<a href="/" class="logo">
+<span class="logo-fa">لونا شید</span>
+<span class="logo-en">LunaShid</span>
+</a>
+
+<nav class="nav">
+<a href="/">خانه</a>
+<a href="/shop/">فروشگاه</a>
+<a href="/about/">درباره ما</a>
+<a href="/favorites/">علاقه‌مندی‌ها</a>
+<a href="/cart/">سبد خرید</a>
+</nav>
+
+<a href="/login/" class="login">ورود</a>
+</header>
+
+<main class="inner">
+<div class="glass-card empty-page">
+<div class="empty-icon">{{ icon }}</div>
+<h1>{{ title }}</h1>
+<p>{{ message }}</p>
+<a href="/shop/" class="hero-button">رفتن به فروشگاه ←</a>
+</div>
+</main>
+
+</body>
+</html>

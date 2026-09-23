@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNASHID — Handmade Ceramic Studio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background: #E8DFD0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .lunashid-hero {
+            width: 100vw;
+            height: 100vh;
+            min-height: 650px;
+
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            overflow: hidden;
+        }
+
+        .lunashid-image {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .lunashid-image img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .lunashid-content {
+            width: 100%;
+            height: 100%;
+
+            background: #E8DFD0;
+            color: #2F4A3D;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            padding: 7vw;
+        }
+
+        .lunashid-eyebrow {
+            margin-bottom: 25px;
+
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 3px;
+
+            color: #2F4A3D;
+        }
+
+        .lunashid-title {
+            margin: 0;
+
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(52px, 5vw, 76px);
+            font-weight: 500;
+            line-height: 1.08;
+            letter-spacing: -1.5px;
+
+            color: #2F4A3D;
+        }
+
+        .lunashid-description {
+            max-width: 490px;
+            margin: 32px 0 0;
+
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 1.9;
+
+            color: #5A6B5F;
+        }
+
+        .lunashid-buttons {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            margin-top: 45px;
+        }
+
+        .lunashid-button {
+            min-width: 170px;
+            height: 54px;
+
+            padding: 0 30px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50px;
+
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 2px;
+
+            text-decoration: none;
+
+            transition: all 0.25s ease;
+        }
+
+        .lunashid-primary {
+            background: #2F4A3D;
+            color: #E8DFD0;
+            border: 1.5px solid #2F4A3D;
+        }
+
+        .lunashid-primary:hover {
+            background: #243A30;
+            transform: translateY(-2px);
+        }
+
+        .lunashid-outline {
+            background: transparent;
+            color: #2F4A3D;
+            border: 1.5px solid #2F4A3D;
+        }
+
+        .lunashid-outline:hover {
+            background: #2F4A3D;
+            color: #E8DFD0;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 850px) {
+
+            .lunashid-hero {
+                height: auto;
+                min-height: 100vh;
+
+                grid-template-columns: 1fr;
+            }
+
+            .lunashid-image {
+                height: 52vh;
+                min-height: 400px;
+            }
+
+            .lunashid-content {
+                height: auto;
+                min-height: 48vh;
+
+                padding: 70px 8vw;
+            }
+
+            .lunashid-title {
+                font-size: 52px;
+            }
+
+            .lunashid-buttons {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 520px) {
+
+            .lunashid-title {
+                font-size: 43px;
+            }
+
+            .lunashid-description {
+                font-size: 14px;
+            }
+
+            .lunashid-buttons {
+                width: 100%;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .lunashid-button {
+                width: 100%;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="{{ url_for("static", filename="css/typography-green.css") }}"><link rel="stylesheet" href="{{ url_for("static", filename="css/mobile.css") }}"><link rel="stylesheet" href="{{ url_for('static', filename='css/global-background.css') }}"></head>
+
+<body>
+
+    <main class="lunashid-hero">
+
+        
+
+    </main>
+
+</body>
+</html>
+
+
+
+
+
+
+

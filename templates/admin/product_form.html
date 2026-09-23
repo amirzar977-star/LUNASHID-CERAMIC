@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+{% if product %}
+ویرایش محصول
+{% else %}
+محصول جدید
+{% endif %}
+| LUNASHID
+</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Vazirmatn,
+        sans-serif;
+
+    background:
+        linear-gradient(
+            rgba(25,38,31,.84),
+            rgba(25,38,31,.94)
+        ),
+        url("/static/images/shop-background.jpg")
+        center/cover fixed;
+
+    color: white;
+}
+
+.container {
+
+    width: min(
+        900px,
+        92%
+    );
+
+    margin:
+        40px auto;
+
+}
+
+.header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+.header h1 {
+
+    font-size: 30px;
+}
+
+.back {
+
+    color:
+        rgba(255,255,255,.7);
+
+    text-decoration: none;
+}
+
+.form-box {
+
+    padding: 30px;
+
+    border-radius: 27px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid
+        rgba(255,255,255,.15);
+
+    backdrop-filter:
+        blur(22px);
+}
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 20px;
+}
+
+.field {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+.field.full {
+
+    grid-column:
+        1 / -1;
+}
+
+label {
+
+    color:
+        rgba(255,255,255,.7);
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+input,
+textarea {
+
+    width: 100%;
+
+    padding: 14px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+    border-radius: 13px;
+
+    background:
+        rgba(0,0,0,.18);
+
+    color: white;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+textarea {
+
+    min-height: 150px;
+
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+
+    border-color:
+        #E5B899;
+
+    background:
+        rgba(0,0,0,.25);
+}
+
+.check {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+.check input {
+
+    width: 18px;
+
+    height: 18px;
+}
+
+.submit {
+
+    margin-top: 25px;
+
+    width: 100%;
+
+    padding: 16px;
+
+    border: 0;
+
+    border-radius: 15px;
+
+    background:
+        #C06B45;
+
+    color: white;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.submit:hover {
+
+    background:
+        #E5B899;
+
+    color:
+        #2F4A3D;
+}
+
+.current-image {
+
+    margin-top: 10px;
+
+    width: 120px;
+
+    height: 120px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+}
+
+@media(max-width:700px) {
+
+    .grid {
+
+        grid-template-columns:
+            1fr;
+    }
+
+    .field.full {
+
+        grid-column:
+            auto;
+    }
+
+    .form-box {
+
+        padding: 20px;
+    }
+}
+
+</style>
+
+<link rel="stylesheet" href="{{ url_for("static", filename="css/admin.css") }}"><link rel="stylesheet" href="{{ url_for("static", filename="css/typography-green.css") }}"><link rel="stylesheet" href="{{ url_for("static", filename="css/mobile.css") }}"><link rel="stylesheet" href="{{ url_for('static', filename='css/global-background.css') }}"></head>
+
+<body>
+
+<div class="container">
+
+
+<div class="header">
+
+<h1>
+
+{% if product %}
+ویرایش محصول
+{% else %}
+محصول جدید
+{% endif %}
+
+</h1>
+
+<a class="back"
+href="{{ url_for('admin.dashboard') }}">
+
+← بازگشت به مدیریت
+
+</a>
+
+</div>
+
+
+<div class="form-box">
+
+
+<form
+method="POST"
+enctype="multipart/form-data">
+
+
+<div class="grid">
+
+
+<div class="field">
+
+<label>
+نام محصول
+</label>
+
+<input
+name="name"
+required
+value="{{ product.name if product else '' }}"
+placeholder="مثلاً گلدان لونا">
+
+</div>
+
+
+<div class="field">
+
+<label>
+Slug
+</label>
+
+<input
+name="slug"
+required
+value="{{ product.slug if product else '' }}"
+placeholder="luna-vase">
+
+</div>
+
+
+<div class="field">
+
+<label>
+قیمت
+</label>
+
+<input
+type="number"
+name="price"
+min="0"
+value="{{ product.price if product else 0 }}">
+
+</div>
+
+
+<div class="field">
+
+<label>
+موجودی
+</label>
+
+<input
+type="number"
+name="stock"
+min="0"
+value="{{ product.stock if product else 0 }}">
+
+</div>
+
+
+<div class="field">
+
+<label>
+دسته‌بندی
+</label>
+
+<input
+name="category"
+value="{{ product.category if product else '' }}"
+placeholder="گلدان، ماگ، کاسه...">
+
+</div>
+
+
+<div class="field">
+
+<label>
+تصویر محصول
+</label>
+
+<input
+type="file"
+name="image"
+accept=".jpg,.jpeg,.png,.webp">
+
+{% if product and product.image %}
+
+<img
+class="current-image"
+src="{{ url_for('static', filename=product.image) }}"
+>
+
+{% endif %}
+
+</div>
+
+
+<div class="field full">
+
+<label>
+توضیحات
+</label>
+
+<textarea
+name="description"
+placeholder="توضیحات محصول...">{{ product.description if product else '' }}</textarea>
+
+</div>
+
+
+<div class="field full">
+
+<label class="check">
+
+<input
+type="checkbox"
+name="featured"
+{% if product and product.featured %}
+checked
+{% endif %}
+>
+
+محصول ویژه باشد
+
+</label>
+
+</div>
+
+
+</div>
+
+
+<button
+class="submit"
+type="submit">
+
+{% if product %}
+ذخیره تغییرات
+{% else %}
+افزودن محصول
+{% endif %}
+
+</button>
+
+
+</form>
+
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+
+
+
+
+
+

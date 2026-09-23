@@ -1,0 +1,573 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشتری‌ها | LUNASHID</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+
+        body{
+            margin:0;
+            min-height:100vh;
+            font-family:Vazirmatn, Tahoma, sans-serif;
+            background:
+                linear-gradient(rgba(247,241,232,.16),rgba(247,241,232,.08)),
+                url("{{ url_for('static', filename='images/shop-background.jpg') }}")
+                center/cover fixed;
+            color:#26372f;
+        }
+
+        .customers-page{
+            min-height:100vh;
+            padding:32px;
+        }
+
+        .customers-container{
+            max-width:1400px;
+            margin:auto;
+        }
+
+        /* HEADER */
+
+        .page-header{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+            padding:22px 26px;
+            margin-bottom:24px;
+
+            background:rgba(255,255,255,.22);
+            border:1px solid rgba(255,255,255,.45);
+            border-radius:26px;
+
+            backdrop-filter:blur(18px);
+            -webkit-backdrop-filter:blur(18px);
+
+            box-shadow:
+                0 18px 50px rgba(40,55,47,.12),
+                inset 0 1px 0 rgba(255,255,255,.55);
+        }
+
+        .title-area h1{
+            margin:0;
+            color:#2F4A3D;
+            font-size:28px;
+            font-weight:900;
+        }
+
+        .title-area p{
+            margin:7px 0 0;
+            color:#52645b;
+            font-size:14px;
+        }
+
+        .back-btn{
+            text-decoration:none;
+            color:#fff;
+            background:#2F4A3D;
+            padding:12px 18px;
+            border-radius:14px;
+            font-size:14px;
+            font-weight:800;
+            transition:.2s;
+            white-space:nowrap;
+        }
+
+        .back-btn:hover{
+            transform:translateY(-2px);
+            background:#23392f;
+        }
+
+        /* TOP STATS */
+
+        .stats{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:18px;
+            margin-bottom:24px;
+        }
+
+        .stat-card{
+            position:relative;
+            overflow:hidden;
+
+            padding:22px;
+            border-radius:24px;
+
+            background:rgba(255,255,255,.24);
+            border:1px solid rgba(255,255,255,.48);
+
+            backdrop-filter:blur(16px);
+            -webkit-backdrop-filter:blur(16px);
+
+            box-shadow:
+                0 15px 45px rgba(40,55,47,.10),
+                inset 0 1px 0 rgba(255,255,255,.6);
+        }
+
+        .stat-card::after{
+            content:"";
+            position:absolute;
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            background:rgba(255,255,255,.14);
+            left:-30px;
+            top:-35px;
+        }
+
+        .stat-label{
+            color:#617067;
+            font-size:13px;
+            margin-bottom:8px;
+        }
+
+        .stat-number{
+            color:#2F4A3D;
+            font-size:30px;
+            font-weight:900;
+        }
+
+        /* TOOLBAR */
+
+        .toolbar{
+            display:flex;
+            align-items:center;
+            gap:14px;
+            margin-bottom:22px;
+        }
+
+        .search-box{
+            flex:1;
+            position:relative;
+        }
+
+        .search-box input{
+            width:100%;
+            height:52px;
+            border:none;
+            outline:none;
+
+            padding:0 20px;
+
+            border-radius:17px;
+
+            background:rgba(255,255,255,.28);
+            border:1px solid rgba(255,255,255,.5);
+
+            color:#26372f;
+            font-family:inherit;
+            font-size:14px;
+
+            backdrop-filter:blur(15px);
+            -webkit-backdrop-filter:blur(15px);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,.55),
+                0 10px 30px rgba(40,55,47,.07);
+        }
+
+        .search-box input::placeholder{
+            color:#738079;
+        }
+
+        .search-box input:focus{
+            border-color:rgba(47,74,61,.45);
+            box-shadow:
+                0 0 0 4px rgba(47,74,61,.08),
+                inset 0 1px 0 rgba(255,255,255,.65);
+        }
+
+        /* CUSTOMER GRID */
+
+        .customers-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+        }
+
+        .customer-card{
+            position:relative;
+            overflow:hidden;
+
+            padding:23px;
+            border-radius:25px;
+
+            background:rgba(255,255,255,.25);
+            border:1px solid rgba(255,255,255,.5);
+
+            backdrop-filter:blur(17px);
+            -webkit-backdrop-filter:blur(17px);
+
+            box-shadow:
+                0 18px 45px rgba(40,55,47,.10),
+                inset 0 1px 0 rgba(255,255,255,.62);
+
+            transition:.25s ease;
+        }
+
+        .customer-card:hover{
+            transform:translateY(-4px);
+            background:rgba(255,255,255,.32);
+            box-shadow:
+                0 25px 55px rgba(40,55,47,.15),
+                inset 0 1px 0 rgba(255,255,255,.7);
+        }
+
+        .customer-top{
+            display:flex;
+            align-items:center;
+            gap:15px;
+            margin-bottom:20px;
+        }
+
+        .avatar{
+            width:56px;
+            height:56px;
+            flex:none;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            border-radius:18px;
+
+            background:rgba(47,74,61,.12);
+            border:1px solid rgba(47,74,61,.16);
+
+            color:#2F4A3D;
+            font-size:21px;
+            font-weight:900;
+        }
+
+        .customer-name{
+            color:#2F4A3D;
+            font-size:17px;
+            font-weight:900;
+        }
+
+        .customer-id{
+            color:#748078;
+            font-size:12px;
+            margin-top:4px;
+        }
+
+        .customer-info{
+            display:grid;
+            gap:10px;
+            margin-bottom:18px;
+        }
+
+        .info-row{
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:15px;
+
+            padding:11px 13px;
+            border-radius:13px;
+
+            background:rgba(255,255,255,.18);
+            border:1px solid rgba(255,255,255,.28);
+        }
+
+        .info-label{
+            color:#758078;
+            font-size:12px;
+        }
+
+        .info-value{
+            color:#30483d;
+            font-size:13px;
+            font-weight:700;
+            text-align:left;
+            direction:ltr;
+        }
+
+        .customer-footer{
+            padding-top:15px;
+            border-top:1px solid rgba(47,74,61,.10);
+
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        .join-date{
+            color:#68776f;
+            font-size:11px;
+        }
+
+        .status{
+            padding:7px 11px;
+            border-radius:10px;
+
+            background:rgba(47,74,61,.11);
+            color:#2F4A3D;
+
+            font-size:11px;
+            font-weight:800;
+        }
+
+        /* EMPTY */
+
+        .empty{
+            grid-column:1/-1;
+            text-align:center;
+            padding:70px 20px;
+
+            background:rgba(255,255,255,.22);
+            border:1px solid rgba(255,255,255,.45);
+            border-radius:26px;
+
+            backdrop-filter:blur(16px);
+            -webkit-backdrop-filter:blur(16px);
+        }
+
+        .empty h3{
+            margin:0 0 8px;
+            color:#2F4A3D;
+        }
+
+        .empty p{
+            margin:0;
+            color:#68776f;
+            font-size:13px;
+        }
+
+        /* MOBILE */
+
+        @media(max-width:1000px){
+            .customers-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+        }
+
+        @media(max-width:700px){
+            .customers-page{
+                padding:15px;
+            }
+
+            .page-header{
+                padding:18px;
+                border-radius:20px;
+                align-items:flex-start;
+                flex-direction:column;
+            }
+
+            .title-area h1{
+                font-size:23px;
+            }
+
+            .back-btn{
+                width:100%;
+                text-align:center;
+            }
+
+            .stats{
+                grid-template-columns:1fr;
+            }
+
+            .toolbar{
+                flex-direction:column;
+            }
+
+            .search-box{
+                width:100%;
+            }
+
+            .customers-grid{
+                grid-template-columns:1fr;
+            }
+        }
+
+        @media(max-width:420px){
+            .customers-page{
+                padding:10px;
+            }
+
+            .customer-card{
+                padding:18px;
+            }
+
+            .stat-number{
+                font-size:26px;
+            }
+
+            .customer-name{
+                font-size:15px;
+            }
+        }
+    </style>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/global-background.css') }}"></head>
+
+<body>
+
+<div class="customers-page">
+    <div class="customers-container">
+
+        <header class="page-header">
+            <div class="title-area">
+                <h1>مشتری‌ها</h1>
+                <p>مدیریت و مشاهده اطلاعات مشتریان LUNASHID</p>
+            </div>
+
+            <a href="{{ url_for('admin.dashboard') }}" class="back-btn">
+                بازگشت به مدیریت
+            </a>
+        </header>
+
+
+        <section class="stats">
+
+            <div class="stat-card">
+                <div class="stat-label">کل مشتری‌ها</div>
+                <div class="stat-number">{{ customers|length }}</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">مشتری‌های ثبت‌شده</div>
+                <div class="stat-number">{{ customers|length }}</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-label">وضعیت سیستم</div>
+                <div class="stat-number" style="font-size:20px;">
+                    فعال
+                </div>
+            </div>
+
+        </section>
+
+
+        <div class="toolbar">
+            <div class="search-box">
+                <input
+                    type="text"
+                    id="customerSearch"
+                    placeholder="جستجو بر اساس نام، شماره یا ایمیل..."
+                    oninput="filterCustomers()"
+                >
+            </div>
+        </div>
+
+
+        <section class="customers-grid" id="customersGrid">
+
+            {% for customer in customers %}
+
+            <article
+                class="customer-card"
+                data-search="{{ customer.name }} {{ customer.phone }} {{ customer.email or '' }}"
+            >
+
+                <div class="customer-top">
+
+                    <div class="avatar">
+                        {{ customer.name[:1] }}
+                    </div>
+
+                    <div>
+                        <div class="customer-name">
+                            {{ customer.name }}
+                        </div>
+
+                        <div class="customer-id">
+                            مشتری #{{ customer.id }}
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="customer-info">
+
+                    <div class="info-row">
+                        <span class="info-label">شماره تماس</span>
+                        <span class="info-value">
+                            {{ customer.phone }}
+                        </span>
+                    </div>
+
+                    <div class="info-row">
+                        <span class="info-label">ایمیل</span>
+                        <span class="info-value">
+                            {{ customer.email or 'ثبت نشده' }}
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="customer-footer">
+
+                    <span class="join-date">
+                        عضویت:
+                        {% if customer.created_at %}
+                            {{ customer.created_at.strftime('%Y/%m/%d') }}
+                        {% else %}
+                            —
+                        {% endif %}
+                    </span>
+
+                    <span class="status">
+                        مشتری فعال
+                    </span>
+
+                </div>
+
+            </article>
+
+            {% else %}
+
+            <div class="empty">
+                <h3>هنوز مشتری‌ای ثبت نشده</h3>
+                <p>
+                    وقتی اولین مشتری ثبت‌نام کند، اطلاعات او اینجا نمایش داده می‌شود.
+                </p>
+            </div>
+
+            {% endfor %}
+
+        </section>
+
+    </div>
+</div>
+
+
+<script>
+function filterCustomers(){
+
+    const input = document
+        .getElementById("customerSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const cards = document.querySelectorAll(".customer-card");
+
+    cards.forEach(card => {
+
+        const text = card
+            .dataset
+            .search
+            .toLowerCase();
+
+        card.style.display =
+            text.includes(input) ? "" : "none";
+
+    });
+}
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,281 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shop-mobile.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shop-mobile-menu.css') }}">
+
+<!-- MOBILE HEADER -->
+<header class="shop-mobile-header">
+
+    <button
+        id="shopMenuBtn"
+        class="shop-menu-button"
+        type="button"
+        aria-label="باز کردن منو"
+    >
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <a href="/" class="shop-mobile-brand">
+        <strong>لونا شید</strong>
+        <span>LunaShid</span>
+    </a>
+
+    <a href="/cart/" class="shop-mobile-cart">
+        ♡
+        <small id="shopCartCount">0</small>
+    </a>
+
+</header>
+
+
+<!-- MOBILE DRAWER -->
+<aside id="shopMobileDrawer" class="shop-mobile-drawer">
+
+    <div class="shop-drawer-brand">
+        <strong>لونا شید</strong>
+        <span>LunaShid</span>
+    </div>
+
+    <nav class="shop-drawer-links">
+
+        <a href="/">
+            خانه
+        </a>
+
+        <a href="/shop/" class="active">
+            فروشگاه
+        </a>
+
+        <a href="/about/">
+            درباره ما
+        </a>
+
+        <a href="/favorites/">
+            علاقه‌مندی‌ها
+        </a>
+
+        <a href="/cart/">
+            سبد خرید
+        </a>
+
+    </nav>
+
+    <div class="shop-drawer-account">
+        <a href="/customer/">
+            حساب کاربری
+        </a>
+    </div>
+
+</aside>
+
+<div id="shopMobileOverlay" class="shop-mobile-overlay"></div>
+
+
+<!-- SHOP -->
+<main class="shop-page">
+
+    <section class="shop-hero glass-card">
+
+        <span>COLLECTION 2026</span>
+
+        <h1>
+            دنیای سفال‌های
+            <strong>لونا شید</strong>
+        </h1>
+
+        <p>
+            مجموعه‌ای از دست‌سازه‌های سفالی،
+            ساخته‌شده با عشق و ظرافت برای خانه‌ی تو.
+        </p>
+
+    </section>
+
+
+    <section class="shop-search glass-card">
+
+        <input
+            id="shopSearch"
+            type="search"
+            placeholder="جستجوی محصول..."
+            autocomplete="off"
+        >
+
+    </section>
+
+
+    <section class="shop-categories glass-card">
+
+        <button class="category-btn active" data-category="all">
+            همه
+        </button>
+
+        <button class="category-btn" data-category="ظروف">
+            ظروف
+        </button>
+
+        <button class="category-btn" data-category="لیوان و ماگ">
+            لیوان و ماگ
+        </button>
+
+        <button class="category-btn" data-category="گلدان">
+            گلدان
+        </button>
+
+        <button class="category-btn" data-category="دکوراتیو">
+            دکوراتیو
+        </button>
+
+        <button class="category-btn" data-category="ست‌های سفالی">
+            ست‌های سفالی
+        </button>
+
+    </section>
+
+
+    <section class="shop-products glass-card">
+
+        <div class="shop-products-head">
+
+            <div>
+                <span>COLLECTION</span>
+                <h2>محصولات</h2>
+            </div>
+
+            <strong id="productCount">
+                ۰ محصول
+            </strong>
+
+        </div>
+
+
+        <div class="shop-products-grid" id="productsGrid">
+
+            <div class="shop-empty-state">
+
+                <div class="empty-icon">○</div>
+
+                <h3>
+                    هنوز محصولی اضافه نشده
+                </h3>
+
+                <p>
+                    به‌زودی مجموعه جدید لونا شید اینجا قرار می‌گیرد.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+const shopMenuBtn =
+    document.getElementById("shopMenuBtn");
+
+const shopDrawer =
+    document.getElementById("shopMobileDrawer");
+
+const shopOverlay =
+    document.getElementById("shopMobileOverlay");
+
+
+function openShopMenu(){
+
+    shopMenuBtn.classList.add("active");
+
+    shopDrawer.classList.add("active");
+
+    shopOverlay.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closeShopMenu(){
+
+    shopMenuBtn.classList.remove("active");
+
+    shopDrawer.classList.remove("active");
+
+    shopOverlay.classList.remove("active");
+
+    document.body.style.overflow = "";
+}
+
+
+shopMenuBtn.addEventListener("click", function(){
+
+    if(shopDrawer.classList.contains("active")){
+        closeShopMenu();
+    }else{
+        openShopMenu();
+    }
+
+});
+
+
+shopOverlay.addEventListener("click", closeShopMenu);
+
+
+shopDrawer.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", closeShopMenu);
+
+});
+
+
+document.addEventListener("keydown", function(event){
+
+    if(event.key === "Escape"){
+        closeShopMenu();
+    }
+
+});
+
+
+/* CATEGORY */
+
+document.querySelectorAll(".category-btn").forEach(button => {
+
+    button.addEventListener("click", function(){
+
+        document
+            .querySelectorAll(".category-btn")
+            .forEach(btn => btn.classList.remove("active"));
+
+        this.classList.add("active");
+
+    });
+
+});
+
+
+/* SEARCH */
+
+const searchInput =
+    document.getElementById("shopSearch");
+
+searchInput.addEventListener("input", function(){
+
+    const value =
+        this.value.trim().toLowerCase();
+
+    /*
+      فعلاً محصولی نداریم.
+      بعداً اینجا فیلتر واقعی محصولات وصل می‌شود.
+    */
+
+});
+
+
+</script>
+
+{% endblock %}

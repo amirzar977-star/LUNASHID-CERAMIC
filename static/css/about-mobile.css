@@ -1,0 +1,361 @@
+﻿/* =========================================
+   LUNASHID — ABOUT MOBILE
+========================================= */
+
+.about-page{
+    width:100%;
+    max-width:1200px;
+    margin:0 auto;
+    padding:135px 24px 70px;
+    box-sizing:border-box;
+}
+
+
+/* MAIN GLASS */
+
+.about-main-card{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    align-items:center;
+
+    padding:32px;
+
+    box-sizing:border-box;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.42);
+
+    backdrop-filter:blur(15px);
+    -webkit-backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.10),
+        inset 0 1px 0 rgba(255,255,255,.35);
+}
+
+
+/* IMAGE */
+
+.about-image-box{
+    position:relative;
+    width:100%;
+    min-height:430px;
+
+    overflow:hidden;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.35);
+}
+
+.about-image-box img{
+    width:100%;
+    height:100%;
+    min-height:430px;
+
+    display:block;
+
+    object-fit:cover;
+}
+
+
+/* TEXT */
+
+.about-content{
+    padding:15px 10px;
+}
+
+.about-eyebrow{
+    display:block;
+
+    margin-bottom:10px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:15px;
+    letter-spacing:4px;
+
+    color:#294b3c;
+
+    font-weight:700;
+}
+
+.about-content h1{
+    margin:0 0 18px;
+
+    font-family:"Vazirmatn",sans-serif;
+
+    font-size:34px;
+    line-height:1.6;
+
+    color:#fff;
+}
+
+.about-content h1 strong{
+    color:#294b3c;
+}
+
+.about-content p{
+    margin:0 0 15px;
+
+    font-family:"Vazirmatn",sans-serif;
+
+    font-size:13px;
+
+    line-height:2.25;
+
+    color:#fff;
+}
+
+
+/* STORY CARDS */
+
+.about-story{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:25px;
+}
+
+.about-story-card{
+    padding:17px 12px;
+
+    text-align:center;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.16);
+
+    border:1px solid rgba(255,255,255,.32);
+
+    transition:.25s ease;
+}
+
+.about-story-card:hover{
+    transform:translateY(-3px);
+
+    background:rgba(255,255,255,.24);
+}
+
+.about-story-card strong{
+    display:block;
+
+    margin-bottom:6px;
+
+    font-family:"Vazirmatn",sans-serif;
+
+    font-size:12px;
+
+    color:#294b3c;
+}
+
+.about-story-card span{
+    display:block;
+
+    font-family:"Vazirmatn",sans-serif;
+
+    font-size:10px;
+
+    line-height:1.8;
+
+    color:#fff;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:768px){
+
+    .about-page{
+
+        /* فاصله از هدر اصلی */
+
+        padding-top:112px;
+        padding-left:12px;
+        padding-right:12px;
+        padding-bottom:45px;
+    }
+
+
+    .about-main-card{
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:18px;
+
+        padding:12px;
+
+        border-radius:23px;
+
+        align-items:stretch;
+    }
+
+
+    /* عکس اول */
+
+    .about-image-box{
+
+        order:1;
+
+        width:100%;
+
+        height:290px;
+
+        min-height:290px;
+
+        border-radius:19px;
+    }
+
+    .about-image-box img{
+
+        width:100%;
+
+        height:290px;
+
+        min-height:290px;
+
+        object-fit:cover;
+    }
+
+
+    /* متن دوم */
+
+    .about-content{
+
+        order:2;
+
+        padding:8px 7px 12px;
+
+        text-align:right;
+    }
+
+
+    .about-eyebrow{
+
+        font-size:12px;
+
+        letter-spacing:3px;
+
+        margin-bottom:6px;
+    }
+
+
+    .about-content h1{
+
+        font-size:23px;
+
+        line-height:1.7;
+
+        margin-bottom:10px;
+    }
+
+
+    .about-content p{
+
+        font-size:11px;
+
+        line-height:2.15;
+
+        margin-bottom:10px;
+    }
+
+
+    /* کارت‌های داستان */
+
+    .about-story{
+
+        grid-template-columns:1fr;
+
+        gap:8px;
+
+        margin-top:16px;
+    }
+
+    .about-story-card{
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:space-between;
+
+        gap:12px;
+
+        padding:13px 15px;
+
+        text-align:right;
+
+        border-radius:15px;
+    }
+
+    .about-story-card strong{
+
+        margin:0;
+
+        font-size:11px;
+
+        min-width:65px;
+    }
+
+    .about-story-card span{
+
+        font-size:10px;
+
+        text-align:right;
+
+        flex:1;
+    }
+
+}
+
+
+/* SMALL PHONE */
+
+@media(max-width:390px){
+
+    .about-page{
+
+        padding-top:108px;
+
+        padding-left:9px;
+        padding-right:9px;
+    }
+
+    .about-main-card{
+
+        padding:9px;
+
+        border-radius:20px;
+    }
+
+    .about-image-box{
+
+        height:245px;
+        min-height:245px;
+    }
+
+    .about-image-box img{
+
+        height:245px;
+        min-height:245px;
+    }
+
+    .about-content h1{
+
+        font-size:21px;
+    }
+
+}

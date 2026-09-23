@@ -1,0 +1,191 @@
+﻿{% extends "admin/admin_base.html" %}
+
+{% block admin_content %}
+
+<div class="admin-shell">
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+            <div class="admin-logo">L</div>
+            <div>
+                <strong>LunaShid</strong>
+                <span>پنل مدیریت</span>
+            </div>
+        </div>
+
+        <div class="admin-side-title">مدیریت</div>
+
+        <nav class="admin-nav">
+
+            <a href="/admin/"><span>⌂</span> داشبورد</a>
+            <a href="/admin/products/"><span>▣</span> مدیریت محصولات</a>
+            <a href="/admin/add-product/"><span>＋</span> افزودن محصول</a>
+            <a href="/admin/categories/"><span>◈</span> دسته‌بندی‌ها</a>
+            <a href="/admin/orders/"><span>▤</span> سفارش‌ها</a>
+            <a href="/admin/order-details/"><span>◰</span> جزئیات سفارش</a>
+            <a href="/admin/customers/"><span>♙</span> مشتریان</a>
+            <a href="/admin/users/"><span>♙</span> مدیریت کاربران</a>
+            <a href="/admin/favorites/"><span>♡</span> علاقه‌مندی‌ها</a>
+            <a href="/admin/carts/"><span>□</span> سبدهای خرید</a>
+            <a href="/admin/inventory/"><span>◫</span> موجودی انبار</a>
+            <a href="/admin/pricing/"><span>₮</span> قیمت‌گذاری</a>
+            <a href="/admin/discounts/"><span>%</span> تخفیف‌ها</a>
+            <a href="/admin/coupons/"><span>#</span> کدهای تخفیف</a>
+            <a href="/admin/payments/"><span>₿</span> پرداخت‌ها</a>
+            <a href="/admin/transactions/"><span>⇄</span> تراکنش‌ها</a>
+            <a href="/admin/shipping/"><span>⌁</span> ارسال و تحویل</a>
+            <a href="/admin/media/"><span>▧</span> مدیریت تصاویر</a>
+            <a href="/admin/gallery/"><span>▦</span> گالری</a>
+            <a href="/admin/reviews/"><span>☆</span> نظرات مشتریان</a>
+            <a href="/admin/messages/"><span>✉</span> پیام‌ها</a>
+            <a href="/admin/notifications/"><span>♢</span> اعلان‌ها</a>
+
+            <div class="admin-side-title">محتوا</div>
+
+            <a href="/admin/homepage/"><span>⌂</span> صفحه اصلی</a>
+            <a href="/admin/hero/"><span>▰</span> بنر و Hero</a>
+            <a href="/admin/about/"><span>◎</span> درباره لونا شید</a>
+            <a href="/admin/faq/"><span>?</span> سؤالات متداول</a>
+            <a href="/admin/blog/"><span>▤</span> وبلاگ</a>
+
+            <div class="admin-side-title">سیستم</div>
+
+            <a href="/admin/analytics/"><span>⌁</span> آمار و گزارش‌ها</a>
+            <a href="/admin/settings/"><span>⚙</span> تنظیمات سایت</a>
+            <a href="/admin/security/"><span>◉</span> امنیت و لاگ فعالیت‌ها</a>
+
+        </nav>
+
+        <a class="admin-back" href="/">← بازگشت به سایت</a>
+
+    </aside>
+
+
+    <main class="admin-main">
+
+        <header class="admin-topbar">
+
+            <button class="admin-mobile-menu-btn" id="adminMenuBtn" type="button" aria-label="باز کردن منو">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="admin-mobile-brand">
+                <strong>LunaShid</strong>
+                <span>مدیریت</span>
+            </div>
+
+            <div class="admin-search">
+                <span>⌕</span>
+                <input type="text" placeholder="جستجو در پنل مدیریت...">
+            </div>
+
+            <div class="admin-top-actions">
+                <button>♢</button>
+                <button>✉</button>
+                <div class="admin-avatar">A</div>
+            </div>
+
+        </header>
+
+        <div class="admin-mobile-overlay" id="adminOverlay"></div>
+
+
+        <section class="admin-content">
+
+            <div class="admin-heading">
+                <div>
+                    <span class="admin-eyebrow">LUNASHID ADMIN</span>
+                    <h1>{{ title }}</h1>
+                    <p>مدیریت و کنترل این بخش از فروشگاه.</p>
+                </div>
+
+                <a href="/admin/" class="admin-secondary">
+                    ← داشبورد
+                </a>
+            </div>
+
+
+            <div class="section-hero">
+
+                <div class="section-icon">✦</div>
+
+                <div>
+                    <h2>{{ title }}</h2>
+                    <p>
+                        این بخش آماده است تا به سیستم اصلی لونا شید متصل شود.
+                        اطلاعات، فرم‌ها، جدول‌ها و عملیات مربوط به این قسمت در همین صفحه قرار می‌گیرند.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="placeholder-grid">
+
+                <div class="admin-panel placeholder-card">
+                    <span>01</span>
+                    <h3>مدیریت اطلاعات</h3>
+                    <p>اطلاعات این بخش را ایجاد، ویرایش و حذف کنید.</p>
+                </div>
+
+                <div class="admin-panel placeholder-card">
+                    <span>02</span>
+                    <h3>گزارش‌ها</h3>
+                    <p>آمار و اطلاعات مرتبط با این قسمت در اینجا قرار می‌گیرد.</p>
+                </div>
+
+                <div class="admin-panel placeholder-card">
+                    <span>03</span>
+                    <h3>تنظیمات</h3>
+                    <p>تنظیمات اختصاصی این بخش را مدیریت کنید.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const shell = document.querySelector(".admin-shell");
+    const menuBtn = document.getElementById("adminMenuBtn");
+    const overlay = document.getElementById("adminOverlay");
+
+    if(!shell || !menuBtn) return;
+
+    function toggleMenu(){
+        shell.classList.toggle("menu-open");
+    }
+
+    function closeMenu(){
+        shell.classList.remove("menu-open");
+    }
+
+    menuBtn.addEventListener("click", toggleMenu);
+
+    if(overlay){
+        overlay.addEventListener("click", closeMenu);
+    }
+
+    document.querySelectorAll(".admin-nav a").forEach(function(link){
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", function(e){
+        if(e.key === "Escape"){
+            closeMenu();
+        }
+    });
+
+});
+</script>
+
+{% endblock %}
+

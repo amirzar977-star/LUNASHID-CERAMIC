@@ -1,0 +1,255 @@
+﻿{% extends "admin/admin_base.html" %}
+
+{% block admin_content %}
+
+<div class="admin-shell">
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+            <div class="admin-logo">L</div>
+            <div>
+                <strong>LunaShid</strong>
+                <span>پنل مدیریت</span>
+            </div>
+        </div>
+
+        <div class="admin-side-title">مدیریت فروشگاه</div>
+
+        <nav class="admin-nav">
+
+            <a class="active" href="/admin/"><span>⌂</span> داشبورد</a>
+            <a href="/admin/products/"><span>▣</span> مدیریت محصولات</a>
+            <a href="/admin/add-product/"><span>＋</span> افزودن محصول</a>
+            <a href="/admin/categories/"><span>◈</span> دسته‌بندی‌ها</a>
+            <a href="/admin/orders/"><span>▤</span> سفارش‌ها</a>
+            <a href="/admin/order-details/"><span>◰</span> جزئیات سفارش</a>
+            <a href="/admin/customers/"><span>♙</span> مشتریان</a>
+            <a href="/admin/users/"><span>♙</span> مدیریت کاربران</a>
+            <a href="/admin/favorites/"><span>♡</span> علاقه‌مندی‌ها</a>
+            <a href="/admin/carts/"><span>□</span> سبدهای خرید</a>
+            <a href="/admin/inventory/"><span>◫</span> موجودی انبار</a>
+            <a href="/admin/pricing/"><span>₮</span> قیمت‌گذاری</a>
+            <a href="/admin/discounts/"><span>%</span> تخفیف‌ها</a>
+            <a href="/admin/coupons/"><span>#</span> کدهای تخفیف</a>
+            <a href="/admin/payments/"><span>₿</span> پرداخت‌ها</a>
+            <a href="/admin/transactions/"><span>⇄</span> تراکنش‌ها</a>
+            <a href="/admin/shipping/"><span>⌁</span> ارسال و تحویل</a>
+            <a href="/admin/media/"><span>▧</span> مدیریت تصاویر</a>
+            <a href="/admin/gallery/"><span>▦</span> گالری</a>
+            <a href="/admin/reviews/"><span>☆</span> نظرات مشتریان</a>
+            <a href="/admin/messages/"><span>✉</span> پیام‌ها</a>
+            <a href="/admin/notifications/"><span>♢</span> اعلان‌ها</a>
+
+            <div class="admin-side-title">محتوا</div>
+
+            <a href="/admin/homepage/"><span>⌂</span> صفحه اصلی</a>
+            <a href="/admin/hero/"><span>▰</span> بنر و Hero</a>
+            <a href="/admin/about/"><span>◎</span> درباره لونا شید</a>
+            <a href="/admin/faq/"><span>?</span> سؤالات متداول</a>
+            <a href="/admin/blog/"><span>▤</span> وبلاگ</a>
+
+            <div class="admin-side-title">سیستم</div>
+
+            <a href="/admin/analytics/"><span>⌁</span> آمار و گزارش‌ها</a>
+            <a href="/admin/settings/"><span>⚙</span> تنظیمات سایت</a>
+            <a href="/admin/security/"><span>◉</span> امنیت و لاگ فعالیت‌ها</a>
+
+        </nav>
+
+        <a class="admin-back" href="/">← بازگشت به سایت</a>
+
+    </aside>
+
+
+    <main class="admin-main">
+
+        <header class="admin-topbar">
+
+            <button class="admin-mobile-menu-btn" id="adminMenuBtn" type="button" aria-label="باز کردن منو">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="admin-mobile-brand">
+                <strong>LunaShid</strong>
+                <span>مدیریت</span>
+            </div>
+
+            <div class="admin-search">
+                <span>⌕</span>
+                <input type="text" placeholder="جستجو در پنل مدیریت...">
+            </div>
+
+            <div class="admin-top-actions">
+                <button>♢</button>
+                <button>✉</button>
+                <div class="admin-avatar">A</div>
+            </div>
+
+        </header>
+
+        <div class="admin-mobile-overlay" id="adminOverlay"></div>
+
+
+        <section class="admin-content">
+
+            <div class="admin-heading">
+
+                <div>
+                    <span class="admin-eyebrow">LUNASHID ADMIN</span>
+                    <h1>داشبورد مدیریت</h1>
+                    <p>همه چیز فروشگاهت را از یکجا مدیریت کن.</p>
+                </div>
+
+                <a href="/admin/add-product/" class="admin-primary">
+                    ＋ افزودن محصول
+                </a>
+
+            </div>
+
+
+            <div class="admin-stats">
+
+                <div class="stat-card">
+                    <span>فروش امروز</span>
+                    <strong>۰ تومان</strong>
+                    <small>هنوز تراکنشی ثبت نشده</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>سفارش‌ها</span>
+                    <strong>۰</strong>
+                    <small>سفارش جدید</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>محصولات</span>
+                    <strong>۰</strong>
+                    <small>محصول فعال</small>
+                </div>
+
+                <div class="stat-card">
+                    <span>مشتریان</span>
+                    <strong>۰</strong>
+                    <small>کاربر ثبت‌نام‌شده</small>
+                </div>
+
+            </div>
+
+
+            <div class="admin-grid">
+
+                <div class="admin-panel chart-panel">
+
+                    <div class="panel-head">
+                        <div>
+                            <h2>نمای کلی فروش</h2>
+                            <p>گزارش عملکرد فروشگاه</p>
+                        </div>
+
+                        <select>
+                            <option>۷ روز اخیر</option>
+                            <option>۳۰ روز اخیر</option>
+                            <option>۳ ماه اخیر</option>
+                        </select>
+                    </div>
+
+                    <div class="fake-chart">
+
+                        <div class="chart-empty">
+                            <div>⌁</div>
+                            <strong>هنوز داده‌ای وجود ندارد</strong>
+                            <span>بعد از ثبت سفارش‌ها، نمودار فروش اینجا نمایش داده می‌شود.</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-panel">
+
+                    <div class="panel-head">
+                        <div>
+                            <h2>فعالیت اخیر</h2>
+                            <p>آخرین اتفاقات فروشگاه</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-empty">
+                        <div>◌</div>
+                        <strong>فعالیتی ثبت نشده</strong>
+                        <span>فعالیت‌های مدیریتی اینجا نمایش داده می‌شوند.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-panel quick-panel">
+
+                <div class="panel-head">
+                    <div>
+                        <h2>دسترسی سریع</h2>
+                        <p>بخش‌هایی که بیشتر استفاده می‌کنی</p>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <a href="/admin/add-product/">＋<span>محصول جدید</span></a>
+                    <a href="/admin/orders/">▤<span>سفارش‌ها</span></a>
+                    <a href="/admin/customers/">♙<span>مشتریان</span></a>
+                    <a href="/admin/inventory/">◫<span>انبار</span></a>
+                    <a href="/admin/discounts/">%<span>تخفیف</span></a>
+                    <a href="/admin/analytics/">⌁<span>گزارش‌ها</span></a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+    const shell = document.querySelector(".admin-shell");
+    const menuBtn = document.getElementById("adminMenuBtn");
+    const overlay = document.getElementById("adminOverlay");
+
+    if(!shell || !menuBtn) return;
+
+    function toggleMenu(){
+        shell.classList.toggle("menu-open");
+    }
+
+    function closeMenu(){
+        shell.classList.remove("menu-open");
+    }
+
+    menuBtn.addEventListener("click", toggleMenu);
+
+    if(overlay){
+        overlay.addEventListener("click", closeMenu);
+    }
+
+    document.querySelectorAll(".admin-nav a").forEach(function(link){
+        link.addEventListener("click", closeMenu);
+    });
+
+    document.addEventListener("keydown", function(e){
+        if(e.key === "Escape"){
+            closeMenu();
+        }
+    });
+
+});
+</script>
+
+{% endblock %}
+

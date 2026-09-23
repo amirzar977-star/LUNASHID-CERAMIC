@@ -1,0 +1,655 @@
+﻿/* ==========================================
+   LUNASHID MOBILE SHOP
+========================================== */
+
+.shop-page{
+    width:100%;
+    max-width:1250px;
+    margin:auto;
+    padding:20px 20px 80px;
+    color:#294b3c;
+}
+
+
+/* MOBILE HEADER */
+
+.shop-mobile-header{
+    display:none;
+}
+
+
+/* MOBILE MENU */
+
+.shop-mobile-menu,
+.shop-menu-overlay{
+    display:none;
+}
+
+
+/* HERO */
+
+.shop-mobile-hero{
+    padding:55px 35px;
+    margin:20px 0;
+    border-radius:32px;
+
+    background:rgba(255,255,255,.24);
+    border:1px solid rgba(255,255,255,.48);
+
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+
+    box-shadow:0 20px 60px rgba(35,59,47,.08);
+}
+
+.shop-mobile-hero > span{
+    font-family:"Cormorant Garamond",serif;
+    font-size:11px;
+    letter-spacing:4px;
+    opacity:.55;
+}
+
+.shop-mobile-hero h1{
+    margin:10px 0;
+    max-width:650px;
+    font-size:40px;
+    line-height:1.5;
+}
+
+.shop-mobile-hero h1 strong{
+    color:#294b3c;
+}
+
+.shop-mobile-hero p{
+    max-width:550px;
+    font-size:12px;
+    line-height:2;
+    opacity:.65;
+}
+
+
+/* SEARCH */
+
+.shop-search-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    max-width:650px;
+    height:54px;
+
+    margin:20px auto;
+
+    padding:0 18px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.30);
+    border:1px solid rgba(255,255,255,.48);
+
+    backdrop-filter:blur(15px);
+}
+
+.shop-search-box span{
+    font-size:24px;
+}
+
+.shop-search-box input{
+    width:100%;
+    border:0;
+    outline:0;
+    background:transparent;
+
+    color:#294b3c;
+    font-family:"Vazirmatn";
+    font-size:11px;
+}
+
+.shop-search-box input::placeholder{
+    color:#294b3c;
+    opacity:.5;
+}
+
+
+/* CATEGORIES */
+
+.shop-categories{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+
+    margin:25px 0;
+
+    overflow-x:auto;
+    scrollbar-width:none;
+}
+
+.shop-categories::-webkit-scrollbar{
+    display:none;
+}
+
+.category{
+    flex:none;
+
+    min-height:40px;
+    padding:0 17px;
+
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:13px;
+
+    background:rgba(255,255,255,.27);
+
+    color:#294b3c;
+
+    font-family:"Vazirmatn";
+    font-size:10px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.category.active{
+    background:#294b3c;
+    color:#fff;
+}
+
+
+/* SECTION TITLE */
+
+.shop-section-title{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+
+    margin:30px 0 15px;
+}
+
+.shop-section-title span{
+    font-family:"Cormorant Garamond",serif;
+    letter-spacing:3px;
+    font-size:10px;
+    opacity:.55;
+}
+
+.shop-section-title h2{
+    margin:4px 0 0;
+    font-size:23px;
+}
+
+.shop-section-title small{
+    font-size:9px;
+    opacity:.5;
+}
+
+
+/* PRODUCTS */
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+
+/* EMPTY */
+
+.shop-empty{
+    grid-column:1/-1;
+
+    min-height:300px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    border-radius:25px;
+
+    border:1px dashed rgba(41,75,60,.20);
+    background:rgba(255,255,255,.15);
+}
+
+.empty-icon{
+    width:65px;
+    height:65px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.3);
+
+    font-size:28px;
+}
+
+.shop-empty h3{
+    margin:15px 0 5px;
+    font-size:14px;
+}
+
+.shop-empty p{
+    max-width:280px;
+    margin:0;
+    font-size:10px;
+    line-height:2;
+    opacity:.55;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:800px){
+
+    .shop-page{
+        padding:10px 12px 60px;
+    }
+
+
+    /* HEADER */
+
+    .shop-mobile-header{
+        position:sticky;
+        top:10px;
+        z-index:100;
+
+        height:60px;
+
+        display:flex;
+        align-items:center;
+
+        gap:9px;
+
+        padding:7px 9px;
+
+        border-radius:19px;
+
+        background:rgba(255,255,255,.30);
+        border:1px solid rgba(255,255,255,.50);
+
+        backdrop-filter:blur(22px);
+        -webkit-backdrop-filter:blur(22px);
+
+        box-shadow:0 12px 35px rgba(35,59,47,.10);
+    }
+
+
+    /* MENU BUTTON */
+
+    .shop-menu-btn{
+        width:42px;
+        height:42px;
+
+        flex:none;
+
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+
+        gap:5px;
+
+        border:1px solid rgba(255,255,255,.45);
+        border-radius:13px;
+
+        background:rgba(255,255,255,.25);
+
+        cursor:pointer;
+    }
+
+    .shop-menu-btn span{
+        width:19px;
+        height:2px;
+
+        border-radius:5px;
+
+        background:#294b3c;
+
+        transition:.25s;
+    }
+
+    .shop-menu-btn.open span:nth-child(1){
+        transform:translateY(7px) rotate(45deg);
+    }
+
+    .shop-menu-btn.open span:nth-child(2){
+        opacity:0;
+    }
+
+    .shop-menu-btn.open span:nth-child(3){
+        transform:translateY(-7px) rotate(-45deg);
+    }
+
+
+    /* BRAND */
+
+    .shop-brand{
+        min-width:0;
+        flex:1;
+    }
+
+    .shop-brand strong{
+        display:block;
+
+        font-family:"Cormorant Garamond",serif;
+
+        font-size:21px;
+        letter-spacing:1px;
+
+        line-height:1;
+    }
+
+    .shop-brand small{
+        display:block;
+
+        margin-top:4px;
+
+        font-size:7px;
+        opacity:.55;
+    }
+
+
+    /* CART */
+
+    .shop-cart-btn{
+        position:relative;
+
+        width:42px;
+        height:42px;
+
+        display:grid;
+        place-items:center;
+
+        border-radius:13px;
+
+        background:#294b3c;
+        color:#fff;
+
+        text-decoration:none;
+
+        font-size:15px;
+    }
+
+    .shop-cart-btn b{
+        position:absolute;
+
+        top:-4px;
+        left:-4px;
+
+        min-width:17px;
+        height:17px;
+
+        display:grid;
+        place-items:center;
+
+        border-radius:50%;
+
+        background:#fff;
+        color:#294b3c;
+
+        font-size:8px;
+    }
+
+
+    /* MOBILE MENU PANEL */
+
+    .shop-mobile-menu{
+        position:fixed;
+
+        top:0;
+        right:0;
+
+        width:290px;
+        height:100vh;
+
+        z-index:1000;
+
+        display:flex;
+        flex-direction:column;
+
+        padding:22px 17px;
+
+        background:rgba(247,241,232,.80);
+
+        backdrop-filter:blur(25px);
+        -webkit-backdrop-filter:blur(25px);
+
+        border-left:1px solid rgba(255,255,255,.55);
+
+        box-shadow:-20px 0 60px rgba(35,59,47,.15);
+
+        transform:translateX(105%);
+
+        transition:.35s cubic-bezier(.4,0,.2,1);
+    }
+
+    .shop-mobile-menu.open{
+        transform:translateX(0);
+    }
+
+    .shop-menu-head{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+
+        padding-bottom:20px;
+        margin-bottom:15px;
+
+        border-bottom:1px solid rgba(41,75,60,.12);
+    }
+
+    .shop-menu-head strong{
+        display:block;
+
+        font-family:"Cormorant Garamond",serif;
+
+        font-size:24px;
+    }
+
+    .shop-menu-head span{
+        display:block;
+
+        font-size:8px;
+        opacity:.55;
+    }
+
+    .shop-menu-head button{
+        width:38px;
+        height:38px;
+
+        border:0;
+        border-radius:12px;
+
+        background:#294b3c;
+        color:#fff;
+
+        font-size:22px;
+
+        cursor:pointer;
+    }
+
+    .shop-mobile-menu > a{
+        min-height:48px;
+
+        display:flex;
+        align-items:center;
+
+        padding:0 14px;
+        margin-bottom:5px;
+
+        border-radius:13px;
+
+        text-decoration:none;
+
+        color:#294b3c;
+
+        font-size:11px;
+        font-weight:600;
+    }
+
+    .shop-mobile-menu > a:hover,
+    .shop-mobile-menu > a.active{
+        background:rgba(41,75,60,.10);
+    }
+
+
+    /* OVERLAY */
+
+    .shop-menu-overlay{
+        position:fixed;
+        inset:0;
+
+        z-index:999;
+
+        display:block;
+
+        background:rgba(20,38,30,.20);
+
+        backdrop-filter:blur(3px);
+        -webkit-backdrop-filter:blur(3px);
+
+        opacity:0;
+        visibility:hidden;
+
+        transition:.3s;
+    }
+
+    .shop-menu-overlay.open{
+        opacity:1;
+        visibility:visible;
+    }
+
+
+    /* HERO */
+
+    .shop-mobile-hero{
+        padding:35px 20px;
+
+        margin:15px 0;
+
+        border-radius:25px;
+    }
+
+    .shop-mobile-hero > span{
+        font-size:9px;
+        letter-spacing:2.5px;
+    }
+
+    .shop-mobile-hero h1{
+        font-size:26px;
+        line-height:1.65;
+        margin:8px 0;
+    }
+
+    .shop-mobile-hero p{
+        font-size:9px;
+        line-height:2.1;
+    }
+
+
+    /* SEARCH */
+
+    .shop-search-box{
+        height:49px;
+
+        margin:12px 0;
+
+        border-radius:15px;
+
+        padding:0 14px;
+    }
+
+    .shop-search-box span{
+        font-size:20px;
+    }
+
+    .shop-search-box input{
+        font-size:9px;
+    }
+
+
+    /* CATEGORIES */
+
+    .shop-categories{
+        justify-content:flex-start;
+
+        margin:15px -12px;
+
+        padding:2px 12px;
+    }
+
+    .category{
+        min-height:38px;
+
+        padding:0 14px;
+
+        font-size:9px;
+
+        border-radius:12px;
+    }
+
+
+    /* PRODUCTS */
+
+    .shop-section-title{
+        margin:25px 0 12px;
+    }
+
+    .shop-section-title h2{
+        font-size:19px;
+    }
+
+    .shop-section-title span{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+
+    .products-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:9px;
+    }
+
+    .shop-empty{
+        min-height:270px;
+
+        padding:20px;
+
+        border-radius:20px;
+    }
+
+}
+
+
+/* SMALL PHONES */
+
+@media(max-width:380px){
+
+    .shop-brand strong{
+        font-size:18px;
+    }
+
+    .shop-mobile-header{
+        height:56px;
+    }
+
+    .shop-menu-btn,
+    .shop-cart-btn{
+        width:39px;
+        height:39px;
+    }
+
+    .shop-mobile-hero h1{
+        font-size:23px;
+    }
+
+    .products-grid{
+        gap:7px;
+    }
+
+}

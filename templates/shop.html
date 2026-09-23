@@ -1,0 +1,203 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shop-mobile.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/shop-layout-fix.css') }}">
+
+<main class="shop-page">
+
+    <!-- HERO -->
+    <section class="shop-hero glass-card">
+
+        <span class="shop-eyebrow">
+            COLLECTION 2026
+        </span>
+
+        <h1>
+            دنیای سفال‌های
+            <strong>لونا شید</strong>
+        </h1>
+
+        <p>
+            مجموعه‌ای از دست‌سازه‌های سفالی،
+            ساخته‌شده با عشق و ظرافت برای خانه‌ی تو.
+        </p>
+
+    </section>
+
+
+    <!-- SEARCH -->
+    <section class="shop-search glass-card">
+
+        <div class="shop-search-inner">
+
+            <span class="shop-search-icon">⌕</span>
+
+            <input
+                id="shopSearch"
+                type="search"
+                placeholder="جستجوی محصول..."
+                autocomplete="off"
+            >
+
+        </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="shop-categories glass-card">
+
+        <button
+            class="category-btn active"
+            data-category="all"
+            type="button"
+        >
+            همه
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="ظروف"
+            type="button"
+        >
+            ظروف
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="لیوان و ماگ"
+            type="button"
+        >
+            لیوان و ماگ
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="گلدان"
+            type="button"
+        >
+            گلدان
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="دکوراتیو"
+            type="button"
+        >
+            دکوراتیو
+        </button>
+
+        <button
+            class="category-btn"
+            data-category="ست‌های سفالی"
+            type="button"
+        >
+            ست‌های سفالی
+        </button>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+    <section class="shop-products glass-card">
+
+        <div class="shop-products-head">
+
+            <div>
+                <span>COLLECTION</span>
+                <h2>محصولات</h2>
+            </div>
+
+            <strong id="productCount">
+                ۰ محصول
+            </strong>
+
+        </div>
+
+
+        <div
+            class="shop-products-grid"
+            id="productsGrid"
+        >
+
+            <div class="shop-empty-state">
+
+                <div class="empty-icon">
+                    ○
+                </div>
+
+                <h3>
+                    هنوز محصولی اضافه نشده
+                </h3>
+
+                <p>
+                    به‌زودی مجموعه جدید لونا شید اینجا قرار می‌گیرد.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    /* =========================
+       CATEGORY
+    ========================= */
+
+    const categoryButtons =
+        document.querySelectorAll(".category-btn");
+
+    categoryButtons.forEach(function(button){
+
+        button.addEventListener("click", function(){
+
+            categoryButtons.forEach(function(btn){
+                btn.classList.remove("active");
+            });
+
+            this.classList.add("active");
+
+        });
+
+    });
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    const searchInput =
+        document.getElementById("shopSearch");
+
+    if(searchInput){
+
+        searchInput.addEventListener("input", function(){
+
+            const value =
+                this.value.trim().toLowerCase();
+
+            /*
+             * فعلاً محصولی نداریم.
+             * فیلتر واقعی بعد از اتصال دیتابیس
+             * به همین قسمت اضافه می‌شود.
+             */
+
+        });
+
+    }
+
+});
+
+</script>
+
+{% endblock %}
+

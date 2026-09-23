@@ -1,0 +1,78 @@
+﻿{% extends "base.html" %}
+
+{% block content %}
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/about-mobile.css') }}">
+
+<main class="about-page">
+
+    <section class="about-main-card">
+
+        <!-- IMAGE -->
+
+        <div class="about-image-box">
+
+            <img
+                src="{{ url_for('static', filename='images/about.png') }}"
+                alt="LunaShid"
+            >
+
+        </div>
+
+
+        <!-- CONTENT -->
+
+        <div class="about-content">
+
+            <span class="about-eyebrow">
+                ABOUT LUNASHID
+            </span>
+
+            <h1>
+                داستان
+                <strong>لونا شید</strong>
+            </h1>
+
+            <p>
+                لونا شید از علاقه به سفال، فرم و جزئیات شکل گرفت؛
+                جایی که هر قطعه با دست ساخته می‌شود و شخصیت خودش را دارد.
+            </p>
+
+            <p>
+                ما باور داریم وسایل خانه فقط برای استفاده نیستند؛
+                می‌توانند بخشی از حس و داستان خانه باشند.
+            </p>
+
+            <p>
+                هر محصول لونا شید با دقت ساخته شده تا گرمای
+                دست‌ساز بودن را به فضای زندگی تو اضافه کند.
+            </p>
+
+
+            <div class="about-story">
+
+                <div class="about-story-card">
+                    <strong>دست‌ساز</strong>
+                    <span>ساخته‌شده با دست و توجه به جزئیات</span>
+                </div>
+
+                <div class="about-story-card">
+                    <strong>با عشق</strong>
+                    <span>هر قطعه بخشی از یک داستان کوچک است</span>
+                </div>
+
+                <div class="about-story-card">
+                    <strong>برای خانه</strong>
+                    <span>طراحی‌شده برای لحظه‌های روزمره</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+{% endblock %}

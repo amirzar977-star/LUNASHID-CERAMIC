@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}LunaShid{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Vazirmatn:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/main.css') }}">
+
+</head>
+
+
+<body>
+
+<div class="background"></div>
+
+
+<header class="glass-header">
+
+
+    <!-- LOGO -->
+
+    <a href="/" class="brand">
+
+        <span class="logo-fa">
+            لونا شید
+        </span>
+
+        <span class="logo-en">
+            LunaShid
+        </span>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav">
+
+        <a href="/">
+            خانه
+        </a>
+
+        <a href="/shop/">
+            فروشگاه
+        </a>
+
+        <a href="/about/">
+            درباره ما
+        </a>
+
+        <a href="/favorites/">
+            علاقه‌مندی‌ها
+        </a>
+
+        <a href="/cart/">
+            سبد خرید
+        </a>
+
+    </nav>
+
+
+    <!-- DESKTOP ACCOUNT -->
+
+    <div class="header-user-area">
+
+
+        <!-- NOT LOGGED -->
+
+        <a
+            href="/login/"
+            id="loginButton"
+            class="header-login">
+
+            ورود
+
+        </a>
+
+
+        <!-- LOGGED -->
+
+        <div
+            id="loggedArea"
+            class="logged-area">
+
+            <a
+                href="/customer/"
+                class="header-account">
+
+                پنل کاربری
+
+            </a>
+
+
+            <button
+                type="button"
+                class="header-logout"
+                onclick="logoutUser()">
+
+                خروج
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- MOBILE -->
+
+    <button
+        class="mobile-menu-btn"
+        onclick="toggleMobileMenu()">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+    </button>
+
+</header>
+
+
+<!-- MOBILE MENU -->
+
+<div
+    id="mobileMenu"
+    class="mobile-menu">
+
+
+    <a href="/">
+        خانه
+    </a>
+
+    <a href="/shop/">
+        فروشگاه
+    </a>
+
+    <a href="/about/">
+        درباره ما
+    </a>
+
+    <a href="/favorites/">
+        علاقه‌مندی‌ها
+    </a>
+
+    <a href="/cart/">
+        سبد خرید
+    </a>
+
+
+    <a
+        href="/login/"
+        id="mobileLogin">
+
+        ورود
+
+    </a>
+
+
+    <div
+        id="mobileLogged"
+        class="mobile-user-actions">
+
+        <a
+            href="/customer/"
+            class="mobile-account">
+
+            پنل کاربری
+
+        </a>
+
+
+        <button
+            type="button"
+            class="mobile-logout"
+            onclick="logoutUser()">
+
+            خروج از حساب
+
+        </button>
+
+    </div>
+
+</div>
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<script>
+
+/*
+    =====================================
+    LUNASHID AUTH SYSTEM
+    =====================================
+*/
+
+const AUTH_KEY = "LUNASHID_USER_LOGGED";
+
+
+function isLoggedIn(){
+
+    return localStorage.getItem(AUTH_KEY) === "1";
+
+}
+
+
+function updateHeader(){
+
+    const logged =
+        isLoggedIn();
+
+
+    const login =
+        document.getElementById("loginButton");
+
+    const loggedArea =
+        document.getElementById("loggedArea");
+
+    const mobileLogin =
+        document.getElementById("mobileLogin");
+
+    const mobileLogged =
+        document.getElementById("mobileLogged");
+
+
+    if(logged){
+
+        if(login){
+            login.style.display = "none";
+        }
+
+        if(loggedArea){
+            loggedArea.style.display = "flex";
+        }
+
+        if(mobileLogin){
+            mobileLogin.style.display = "none";
+        }
+
+        if(mobileLogged){
+            mobileLogged.style.display = "flex";
+        }
+
+    }
+
+    else{
+
+        if(login){
+            login.style.display = "flex";
+        }
+
+        if(loggedArea){
+            loggedArea.style.display = "none";
+        }
+
+        if(mobileLogin){
+            mobileLogin.style.display = "flex";
+        }
+
+        if(mobileLogged){
+            mobileLogged.style.display = "none";
+        }
+
+    }
+
+}
+
+
+function logoutUser(){
+
+    localStorage.removeItem(AUTH_KEY);
+
+    localStorage.removeItem("lunashid_customer");
+
+    localStorage.removeItem("lunashid_phone");
+
+    window.location.href = "/login/";
+
+}
+
+
+function toggleMobileMenu(){
+
+    const menu =
+        document.getElementById("mobileMenu");
+
+    if(menu){
+
+        menu.classList.toggle("show");
+
+    }
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateHeader();
+
+    }
+);
+
+
+/*
+    اگر صفحه با Back/Forward مرورگر برگشت،
+    هدر دوباره وضعیت واقعی را می‌خواند.
+*/
+
+window.addEventListener(
+    "pageshow",
+    function(){
+
+        updateHeader();
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
